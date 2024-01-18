@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students data</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400&display=swap" rel="stylesheet">
+    <style>
+        body{
+            padding: 0;
+            margin: 0;
+            text-align: center;
+             background-color:rgb(85, 85, 85);
+             font-family: 'Noto Sans', sans-serif;
+        }
+
+        .parent{
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            
+        }
+
+        .child{
+            border: 1px;
+            width: 90%;
+            height: 100%;
+            padding: 12px;
+            background-color: rgb(106, 107, 107);
+            margin-left: 10px;
+            border-radius: 10px;
+            
+        }
+
+        h1 {
+            text-shadow: 0 0 5px #fac31d, 0 0 15px #fac31d, 0 0 20px #fac31d, 0 0 40px #fac31d, 0 0 60px #ff0000, 0 0 10px #ff8d00, 0 0 98px #ff0000;
+            color: #fff6a9;
+            font-family: "Sacramento", cursive;
+            text-align: center;
+            animation: blink 12s infinite;
+            -webkit-animation: blink 12s infinite;
+}
+
+    label{
+        text-shadow: 0 0 5px #fac31d, 0 0 15px #fac31d, 0 0 20px #fac31d, 0 0 40px #fac31d, 0 0 60px #ff0000, 0 0 10px #ff8d00, 0 0 98px #ff0000;
+            color: #fff6a9;
+            font-family: "Sacramento", cursive;
+            text-align: center;
+            animation: blink 12s infinite;
+            -webkit-animation: blink 12s infinite;  
+    }
+
+
+
+    @-webkit-keyframes blink {
+        20%,
+        24%,
+        55% {
+            color: #111;
+            text-shadow: none;
+            }
+
+        0%,
+        19%,
+        21%,
+        23%,
+        25%,
+        54%,
+        56%,
+        100% {
+            text-shadow: 0 0 5px #fac31d, 0 0 15px #fac31d, 0 0 20px #fac31d, 0 0 40px #fac31d, 0 0 60px #ff0000, 0 0 10px #ff8d00, 0 0 98px #ff0000;
+            color: #fff6a9;
+            }
+        }
+
+        @keyframes blink {
+        20%,
+        24%,
+        55% {
+            color: #111;
+            text-shadow: none;
+            }
+
+        0%,
+        19%,
+        21%,
+        23%,
+        25%,
+        54%,
+        56%,
+        100% {
+            text-shadow: 0 0 5px #fac31d, 0 0 15px #fac31d, 0 0 20px #fac31d, 0 0 40px #fac31d, 0 0 60px #ff8000, 0 0 10px #ff3700, 0 0 98px #ff0000;
+            color: #fff6a9;
+            }
+        }
+
+        input[type=text]{
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        input[type=number]{
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        textarea{
+            text-align: center;
+            width: 100%;
+            height: 100%;
+            margin-top: 5%;
+            border-radius: 10px;
+            background-color: rgb(73, 72, 72);
+            text-shadow: 0 0 5px #fac31d, 0 0 15px #fac31d, 0 0 20px #fac31d, 0 0 40px #fac31d, 0 0 60px #ff0000, 0 0 10px #ff8d00, 0 0 98px #ff0000;
+            color: #fff6a9;
+            font-size: larger;
+            font-weight: bold;
+        }
+
+        input{
+            width: 150px;
+            background-color: rgb(57, 57, 57);
+            color: rgb(255, 111, 0);
+            font-weight: bold;
+            text-align: center;
+        }
+
+        input[type=button]{
+            box-shadow:
+            0 0 20px  #ff9aff;
+            border: 1px solid#ff9aff;
+            box-shadow: 0 0 5px #ff9aff, 0 0 5px;
+            border-radius: 5px;
+            border: 1px;
+            width: 100px;
+            transition: all 0.3s ease;
+        }
+
+        input[type=button]:hover{
+            box-shadow: 0 0 2px 2px rgb(245, 173, 245);
+            color: #fff;
+        }
+
+        input[type=button]:hover::after{
+            color: rgb(245, 173, 245);
+            left: 0;
+            width: 100%;
+        }
+
+        #plus{
+            font-size:medium;
+            font-weight: bold;
+            font-family: "Sacramento", cursive;
+            color: #fa5c1d;
+        }
+
+        input[type=button]:active{
+            background-color: rgb(0, 208, 255);
+        }
+    </style>
+
+    <script type="text/javascript">
+        var data = [];
+        function add()
+        {   
+            var nm = document.frm.nom1.value;
+            var rm = document.frm.std.value;
+            let ma = parseInt(document.frm.math.value);
+            let en = parseInt(document.frm.eng.value);
+            let sc = parseInt(document.frm.sci.value);
+            let sum = ma + en + sc;
+            
+
+            data.push('Students name is :' + nm);
+            data.push('Class : '+ rm);
+            data.push('Maths  :'+ ma);
+            data.push('English :' + en);
+            data.push('Science :' + sc);
+            data.push('Total Marks is :' + sum);
+            document.frm.txt.value = data.join('\n');
+            document.getElementById("search").focus();  
+        }
+
+        
+
+        function sea()
+        {
+            var nom3 = document.frm.search.value;
+            var k = 0;
+
+            for(let i=0; i<data.length;i++)
+            {
+                if(data[i] == nom3)
+                {
+                    k = 1;
+
+                    break;
+                }
+            }
+
+            
+            if(k==1)
+            {
+                document.frm.txt.value = `${nom3} is available in the data`
+            }
+            else{
+                document.frm.txt.value = `${nom3} is not available in the data`
+            }
+        }
+
+    </script>
+</head> 
+<body>
+    <h1>Students Data</h1>
+    <form action="#" name="frm">
+        <div class="parent">
+            <div class="child">
+              <h1>Students Details</h1>
+              <br>
+              <label>Students Name  : </label><br>
+              <input type="text" name="nom1">
+              <br><br>
+              <label>Class : </label><br>
+              <input type="number" name="std">
+              <br>
+              <hr>
+              <br><br>
+              <label>MATHS :</label>
+              <input type="number" name="math">
+              <br><br>
+              <label>ENGLISH : </label>
+              <input type="number" name="eng">
+              <br><br>
+              <label>SCIENCE : </label>
+              <input type="number" name="sci">
+              <br><br>
+              <input type="button" id="plus" value="Addition" onclick="add()">
+            </div>
+
+            <!-- search -->
+            <div class="child">
+                <h1>Search Details</h1>
+                <input type="text" name="search" id="search">
+                <br><br>
+                <input type="button" value="Search" onclick="sea()">
+            </div>
+
+            <!-- Delete details -->
+            <div class="child">
+                <h1>Delete Details</h1>
+                <input type="text" name="delete">
+                <br><br>
+                <input type="button" id="plus" value="Delete" onclick="del()">
+            </div>
+            
+      </div>
+      <textarea name="txt" placeholder="Output" id="area" cols="300" rows="10"></textarea>
+    </form>
+</body>
+</html>
